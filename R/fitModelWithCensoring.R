@@ -13,7 +13,8 @@ fitModelWithCensoring <- function(Trainingset,  #do now Trainingset$Train
 
   fitOutcomes <- PatientLevelPrediction::fitPlp(trainData = Trainingset,
                                                 modelSettings = modelSettings,
-                                                analysisId = "outcome_model")
+                                                analysisId = "outcome_model",
+                                                 analysisPath = "/path/")
 
  censoringPop <- Trainingset
   censoringPop$labels <- censoringPop$labels %>%
@@ -30,7 +31,8 @@ fitModelWithCensoring <- function(Trainingset,  #do now Trainingset$Train
 
   fitCensoring <- PatientLevelPrediction::fitPlp(trainData = censoringPop,
                                                  modelSettings = modelSettings,
-                                                 analysisId = "censoring_model")
+                                                 analysisId = "censoring_model",
+                                                  analysisPath = "/path")
 
 
   return(list(censorModel = fitCensoring,
